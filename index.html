@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <!--Material Design Lite-->
+        <link rel="stylesheet" href="vendor/icon.css">
+        <link rel="stylesheet" href="vendor/material.indigo-pink.min.css">
+        <script defer src="vendor/material.min.js"></script>
+
+        <!--Testing-->
+        <script src="vendor/expect.min.js"></script>
+
+        <!--Babel-->
+        <script src="vendor/babel.min.js"></script>
+
+        <!--Redux-->
+        <script src="vendor/redux.js"></script>
+        
+        <!--ReduxUndo-->
+        <script src="vendor/reduxundo.js" type="text/babel"></script>
+
+        <!--ReduxLocalStorageSimple-->
+        <script src="vendor/reduxlocalstorage.js" type="text/babel"></script>
+
+        <!--Styles and rendering-->
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <script src="render.js"></script>
+
+        <!--All of our code for the demo-->
+        
+    </head>
+    <body>
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+            <!--Header-->
+            <header class="mdl-layout__header">
+               <div class="mdl-layout__header-row">
+                    <span class="mdl-layout-title title">Studio Redux Demo</span>
+                    <div class="mdl-layout-spacer"></div>
+                    <nav class="mdl-navigation">
+                        <!--Undo/Redo-->
+                        <button class="mdl-button mdl-js-button mdl-button--icon" id="undo">
+                            <i class="material-icons">undo</i>
+                        </button>
+                        <button class="mdl-button mdl-js-button mdl-button--icon" id="redo">
+                            <i class="material-icons">redo</i>
+                        </button>
+                    </nav>
+                </div>
+            </header>
+            <!--Item Editor-->
+            <div class="mdl-layout__drawer">
+                <div id="item-editors">
+                    <span class="mdl-layout-title">Items</span>
+                </div>
+                <!--Add item button-->
+                <button id="add-item" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-button--primary">
+                    <i class="material-icons">add</i>
+                </button>
+            </div>
+            <!--Canvas-->
+            <main class="mdl-layout__content">
+                <div id="canvas" class="mdl-card mdl-shadow--16dp"></div>
+            </main>
+        </div>
+    </body>
+</html>

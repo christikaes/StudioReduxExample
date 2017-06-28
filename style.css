@@ -1,0 +1,85 @@
+.title {
+    position: absolute;
+    left: 380px;
+}
+
+.mdl-layout--fixed-drawer>.mdl-layout__content {
+    margin-left: 360px;
+    display: flex;
+}
+
+.mdl-layout__drawer {
+    width: 360px;
+    overflow: hidden;
+}
+
+.mdl-layout__drawer.is-visible {
+  left: 0;
+}
+
+.mdl-navigation .mdl-icon-toggle.is-checked .mdl-icon-toggle__label {
+    color: #ffffff;
+}
+
+mdl-navigation .mdl-icon-toggle .mdl-icon-toggle__label {
+    color: #cccccc;
+}
+
+#add-item {
+    position: absolute;
+    bottom: 10px;
+    right: 25px;
+    z-index: 1;
+}
+
+#item-editors {
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    height: calc(100% - 80px);
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding: 20px;
+    padding-bottom: 60px;
+}
+
+.item-editor {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    min-height: 140px;
+    margin: 20px auto;
+}
+
+.add-item-editor {
+    align-self: flex-end;
+    order:1;
+}
+
+.text-container {
+    display: flex;
+}
+
+.text-ctas {
+    display: flex;
+    /*display: none;*/
+}
+
+#canvas {
+    width: 680px;
+    height: 390px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    align-items: flex-end;
+    background-image: url("design.png");
+}
+
+.item {
+    color: #f9fc8b;
+    font-size: 30px;
+    line-height: 100%;
+    margin: 5px;
+}
