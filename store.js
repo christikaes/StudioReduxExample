@@ -1,6 +1,11 @@
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || Redux.compose;
+
 const store = Redux.createStore(
     undoable(reducer, { undoType: "UNDO", redoType: "REDO", jumpToPastType: "JUMP_TO_PAST", jumpToFutureType: "JUMP_TO_FUTURE" }),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    load(),
+    composeEnhancers(
+        Redux.applyMiddleware(save())
+    )
 );
 
 window.store = store;
