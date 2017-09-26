@@ -1,7 +1,7 @@
-# StudioReduxExample
+# Redux101 with StudioReduxExample
 
-PART 1
-REDUX 101
+## PART 1
+## REDUX 101
 
 Let's get right into it! I'm a strong believer in learning by doing, so today we will build a very naive version of the Vistaprint Studio.
 
@@ -64,6 +64,7 @@ An action creator does exactly that--it returns an action.
 
 Let's go ahead and write some action creators. The first thing that we'll do is write some unit tests.
 
+```
 testAddItemActionCreator(){
     action = {
         type: 'ADD_ITEM',
@@ -77,9 +78,11 @@ testAddItemActionCreator(){
     }
     expect(addItemAction()).toEqual(action)
 }
+```
 
 This will fail since we haven't written our action yet. Let's do that now:
 
+```
 addItemAction() {
     return {
         type: 'ADD_ITEM',
@@ -92,6 +95,7 @@ addItemAction() {
         }
     }
 }
+```
 
 Let's do the same for removeItem.
 
@@ -108,6 +112,8 @@ The state of the application contains everything that changes in our application
 The first thing that comes to mind is the data of our app, but the state can also contain UI details.
 
 Let's design the state of our studio application.
+
+```
 [
     {
         text: "Sample",
@@ -118,9 +124,12 @@ Let's design the state of our studio application.
     },
     ...
 ]
+```
 
 What will the initial state of our application be?
+```
 INITIAL_STATE = [];
+```
 
 If we wanted to hydrate the state from a database or localstorage, we could do that here.
 
@@ -132,6 +141,7 @@ What happens when:
 
 Let's code it out! First we'll write some tests
 
+```
 testAddItem(){
     oldState = [];
     action = {
@@ -153,9 +163,11 @@ testAddItem(){
     }]
     expect(studioReducer(oldState, action)).toEqual(newState);
 }
+```
 
 If we run this now, it will fail. Let's implement our reducer:
 
+```
 studioReducer(state, action){
     // If there is no state then return the initial state
     // This happens when the store is first setup
@@ -169,6 +181,7 @@ studioReducer(state, action){
         default:
             return state;
 }
+```
 
 Ok let's run the test again. Great it passes!
 
@@ -198,23 +211,30 @@ The redux store holds the application state. It is created by passing in our roo
 Any actions that we want to dispatch are dispatched on our store.
 
 Let's go ahead and create our store.
-
+```
 store = Redux.createStore(studioReducer);
+```
 
 We can use getState to get the state of our store at any time:
+```
 store.getState();
+```
 
 Remember, we cannot set the state directly on the store, we have to set state through an action. The store is Readonly.
 
 The store exposes a subscribe method that we can use to listen to changes on our app state. Let's subscribe to it and log the state:
 
+```
 store.subscribe(() => {
     console.log(store.getState())
 })
+```
 
 That's it! Now we can dispatch any of the actions on the store and see the state update:
 
+```
 store.dispatch(addItemAction())
+```
 
 And our store subscribe get's triggered.
 
@@ -239,8 +259,8 @@ Note that in a real application this logic would live inside of your container c
 
 Now our UI is able to manipulate the state of our app!
 
-PART 2
-REDUX A FEW BEST PRACTICES
+## PART 2
+## REDUX A FEW BEST PRACTICES
 Right now we have all of our code in 1 file, let's separate this out.
 
 If we were to further expand this app, we could put each action and reducer into their own files.
@@ -260,6 +280,7 @@ Because the state of our document can be defined by a single immutable json obje
 
 First let's consider what our state will have to look like for this support:
 
+```
 [
     past: [],
     present: [
@@ -273,6 +294,7 @@ First let's consider what our state will have to look like for this support:
     ],
     future: []
 ]
+```
 
 We can use: https://github.com/omnidan/redux-undo
 This is a higher order reducer that adds past, present, future to our state. We don't have to wory about it at all!
@@ -296,8 +318,8 @@ store.dispatch({ type: 'UNDO'});
 There we go! In 5 minutes, we've added the ability to undo/redo in our application. Now anytime the user hits undo or redo, we can modify our state
 
 
-PART 5
-Syncing with localstorage
+## PART 5
+## Syncing with localstorage
 
 Another feature we might want to add to our applicaiton might be the ability to sync our app to localstorage. That way the user does not have to start from scratch when starting the application again.
 In order to do this we will need to use a middleware.
