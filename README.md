@@ -1,7 +1,6 @@
 # Redux101 with StudioReduxExample
 
-## PART 1
-## REDUX 101
+## PART 1--REDUX 101
 
 Let's get right into it! I'm a strong believer in learning by doing, so today we will build a very naive version of the Vistaprint Studio.
 
@@ -39,6 +38,7 @@ In many ways these are very similar to events, however more complex.
 
 I mentioned this before, but the reason that this is so powerful is that any update to your application store can be defined by some very particular action.
 Let's go ahead and define the actions for our Studio application.
+```
 {
     type: 'ADD_ITEM',
     payload: {
@@ -53,6 +53,7 @@ Let's go ahead and define the actions for our Studio application.
     type: 'REMOVE_ITEM',
     index: 1
 }
+```
 
 I personally perfer putting all of the data that is being passed through the action in a payload object. It keeps large amounts of data clean.
 
@@ -259,22 +260,19 @@ Note that in a real application this logic would live inside of your container c
 
 Now our UI is able to manipulate the state of our app!
 
-## PART 2
-## REDUX A FEW BEST PRACTICES
+## PART 2 -- REDUX A FEW BEST PRACTICES
 Right now we have all of our code in 1 file, let's separate this out.
 
 If we were to further expand this app, we could put each action and reducer into their own files.
 
 Let's also go ahead and add a few more actions and reducers for the other funcitonality of our application.
 
-PART 3
-REDUX DEV TOOLS
+## PART 3 -- REDUX DEV TOOLS
 The redux dev tools are a great way to inspect your application. Let's add dev tools support to our application.
 
 With this you can really see how redux is almost like an API for our UI!
 
-PART 4
-UNDO REDO
+## PART 4 -- UNDO REDO
 One thing that we might want to add to our app is the ability to undo and redo.
 Because the state of our document can be defined by a single immutable json object, we can easily keep these references.
 
@@ -306,7 +304,8 @@ const store = Redux.createStore(
     [],
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
     []
-);```
+);
+```
 
 All we need to do to call it is dispatch an action: 
 
@@ -318,8 +317,7 @@ store.dispatch({ type: 'UNDO'});
 There we go! In 5 minutes, we've added the ability to undo/redo in our application. Now anytime the user hits undo or redo, we can modify our state
 
 
-## PART 5
-## Syncing with localstorage
+## PART 5 -- Syncing with localstorage
 
 Another feature we might want to add to our applicaiton might be the ability to sync our app to localstorage. That way the user does not have to start from scratch when starting the application again.
 In order to do this we will need to use a middleware.
